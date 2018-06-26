@@ -3,11 +3,14 @@
         <div>
             <app-logo/>
             <h1 class="title">
-                nuxt-test
+                nuxt-test{{$store.state.counter}}
             </h1>
             <h2 class="subtitle">
                 Nuxt.js project
             </h2>
+            <button @click="$store.commit('increment')" class="subtitle">
+                add++
+            </button>
             <div class="links">
                 <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
                 <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
@@ -37,6 +40,15 @@
                     }
                 })
             }
+        },
+        mounted(){
+            this.axios.get('api/school', {
+                params: {
+                    page: 1,
+                    per_page: 20
+                }
+            });
+            console.log(this.qs)
         }
     }
 </script>

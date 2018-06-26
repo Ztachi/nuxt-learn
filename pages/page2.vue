@@ -1,5 +1,6 @@
 <template>
-    <div>我是页面2</div>
+    <div>我是页面2<br/>{{$store.state.counter}}</div>
+
 </template>
 
 <script>

@@ -1,7 +1,8 @@
 const path = require('path');
 const axios = require('axios');
-const router = require('./router').router;
+const router = require('./router');
 module.exports = {
+    // router
     /*
      ** Headers of the page
      */
@@ -119,5 +120,22 @@ module.exports = {
                 content: 'Meta description'
             }
         ]
-    }
+    },
+    //引入插件
+    plugins: ['~/plugins/plugins'],
+    //引入代理插件
+    modules: [
+        '@nuxtjs/axios',
+        '@nuxtjs/proxy'
+    ],
+    //设置代理
+    proxy: [
+        [
+          '/api', 
+          { 
+            target: 'http://api.cd.pxjy.com/api', // api主机
+            pathRewrite: { '^/api' : '/' }
+          }
+      ]
+    ]
 }
