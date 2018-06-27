@@ -5,7 +5,11 @@
 
 <script>
 export default {
-
+  head () {
+    return {
+      title: '我是page2'
+    }
+  }
 }
 </script>
 

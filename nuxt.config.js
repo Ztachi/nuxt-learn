@@ -2,7 +2,7 @@ const path = require('path');
 const axios = require('axios');
 const router = require('./router');
 module.exports = {
-    // router
+    router,
     /*
      ** Headers of the page
      */
@@ -105,22 +105,22 @@ module.exports = {
     //     }
     //   },
     //设置title等信息
-    head: {
-        titleTemplate: 'title - Nuxt.js',
-        meta: [{
-                charset: 'utf-8'
-            },
-            {
-                name: 'viewport',
-                content: 'width=device-width, initial-scale=1'
-            },
-            {
-                hid: 'description',
-                name: 'description',
-                content: 'Meta description'
-            }
-        ]
-    },
+    // head: {
+    //     titleTemplate: 'title - Nuxt.js',
+    //     meta: [{
+    //             charset: 'utf-8'
+    //         },
+    //         {
+    //             name: 'viewport',
+    //             content: 'width=device-width, initial-scale=1'
+    //         },
+    //         {
+    //             hid: 'description',
+    //             name: 'description',
+    //             content: 'Meta description'
+    //         }
+    //     ]
+    // },
     //引入插件
     plugins: ['~/plugins/plugins'],
     //引入代理插件
