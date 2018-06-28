@@ -69,12 +69,22 @@ module.exports = {
                     name: 'fonts/[name].[hash:7].[ext]'
                 }
             }, {
+                test: /\.css/,
+                use: ['style-loader',
+                    'css-loader',
+                    'sprite-loader'
+                ]
+            }, {
                 test: /\.scss$/,
                 use: [
-                    'vue-style-loader',
+                    'vue-style-loader', 
                     'css-loader',
-                    'sass-loader'
+                    'sass-loader',
+                    'sprite-loader'
                 ]
+            }, {
+                test: /\.svg$/,
+                loader: 'svg-inline-loader'
             }
         ],
         //第三方插件加入vendor防止重复打包
@@ -105,22 +115,21 @@ module.exports = {
     //     }
     //   },
     //设置title等信息
-    // head: {
-    //     titleTemplate: 'title - Nuxt.js',
-    //     meta: [{
-    //             charset: 'utf-8'
-    //         },
-    //         {
-    //             name: 'viewport',
-    //             content: 'width=device-width, initial-scale=1'
-    //         },
-    //         {
-    //             hid: 'description',
-    //             name: 'description',
-    //             content: 'Meta description'
-    //         }
-    //     ]
-    // },
+    head: {
+        meta: [{
+                charset: 'utf-8'
+            },
+            {
+                name: 'viewport',
+                content: 'width=device-width, initial-scale=1'
+            },
+            {
+                hid: 'description',
+                name: 'description',
+                content: 'Meta description'
+            }
+        ]
+    },
     //引入插件
     plugins: ['~/plugins/plugins'],
     //引入代理插件
@@ -131,11 +140,19 @@ module.exports = {
     //设置代理
     proxy: [
         [
-          '/api', 
-          { 
-            target: 'http://api.cd.pxjy.com/api', // api主机
-            pathRewrite: { '^/api' : '/' }
-          }
-      ]
-    ]
+            '/api',
+            {
+                target: 'http://api.cd.pxjy.com/api', // api主机
+                pathRewrite: {
+                    '^/api': '/'
+                }
+            }
+        ]
+    ],
+    watchers: {
+        webpack: {
+            //排除对node_modules文件夹的监听
+            ignored: /node_modules/
+        }
+      }
 }

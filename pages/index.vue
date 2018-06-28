@@ -9,8 +9,8 @@
                 Nuxt.js project
             </h2>
             <button @click="$store.commit('increment')" class="subtitle">
-                    add++
-                </button>
+                        add++
+                    </button>
             <div class="links">
                 <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
                 <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
@@ -53,6 +53,11 @@
                     per_page: 20
                 }
             });
+        },
+        head() {
+            return {
+                title: '首页'
+            }
         }
     }
 </script>
