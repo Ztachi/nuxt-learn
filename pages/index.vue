@@ -26,7 +26,6 @@
     export default {
         //参数校验,返回false则跳转404
         validate(d) {
-            console.log(d);
             return true;
         },
         components: {

@@ -1,6 +1,7 @@
 const path = require('path');
 const axios = require('axios');
 const router = require('./router');
+console.log('----', path.resolve(__dirname, './assets/svg'));
 module.exports = {
     router,
     /*
@@ -77,14 +78,11 @@ module.exports = {
             }, {
                 test: /\.scss$/,
                 use: [
-                    'vue-style-loader', 
+                    'vue-style-loader',
                     'css-loader',
                     'sass-loader',
                     'sprite-loader'
                 ]
-            }, {
-                test: /\.svg$/,
-                loader: 'svg-inline-loader'
             }
         ],
         //第三方插件加入vendor防止重复打包
@@ -154,5 +152,5 @@ module.exports = {
             //排除对node_modules文件夹的监听
             ignored: /node_modules/
         }
-      }
+    }
 }

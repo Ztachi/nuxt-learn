@@ -3,6 +3,37 @@
  * @Date: 2018-06-26 14:10:54 
  * @Description: 全局共用样式以及参数
  * @Last Modified by: 詹真琦(legendryztachi@gmail.com)
- * @Last Modified time: 2018-06-26 14:31:59
+ * @Last Modified time: 2018-06-28 17:05:08
  */
 @import 'base';
+/* recommended css code for vue-svgicon */
+.svg-icon {
+    display: inline-block;
+    @include equalWH(16,false);
+    color: inherit;
+    vertical-align: middle;
+    fill: none;
+    stroke: currentColor;
+}
+
+.svg-fill {
+    fill: currentColor;
+    stroke: none;
+}
+
+.svg-up {
+    /* 默认 */
+    transform: rotate(0deg);
+}
+
+.svg-right {
+     transform: rotate(90deg);
+}
+
+.svg-down {
+    transform: rotate(180deg);
+}
+
+.svg-left {
+    transform: rotate(-90deg);
+}
