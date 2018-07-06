@@ -20,6 +20,9 @@ $ npm run generate
 
 # svg merge
 $ npm run svg
+
+# visualize your bundles and how to optimize them.
+$ npm run analyze
 ```
 
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).

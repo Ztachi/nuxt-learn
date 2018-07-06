@@ -21,6 +21,7 @@
 </script>
 
 <style lang="scss" scoped>
+/* sprite-loader-enable */
     #page2 {
         >div {
             @include equalWH(50, false);

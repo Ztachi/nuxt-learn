@@ -1,7 +1,6 @@
 const path = require('path');
 const axios = require('axios');
 const router = require('./router');
-console.log('----', path.resolve(__dirname, './assets/svg'));
 module.exports = {
     router,
     /*
@@ -152,5 +151,6 @@ module.exports = {
             //排除对node_modules文件夹的监听
             ignored: /node_modules/
         }
-    }
+    },
+    analyze: true
 }
