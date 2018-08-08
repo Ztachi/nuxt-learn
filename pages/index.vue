@@ -24,6 +24,7 @@
 <script>
     import AppLogo from '~/components/AppLogo.vue'
     export default {
+        layout: 'blog',//用layouts文件夹下的blog模板做页面布局
         //参数校验,返回false则跳转404
         validate(d) {
             return true;
