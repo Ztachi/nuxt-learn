@@ -52,6 +52,9 @@ module.exports = {
                     exclude: /(node_modules)/
                 })
             }
+            return Object.assign({}, config, {
+                devtool: 'source-map'
+              })
         },
         loaders: [{
                 test: /\.(png|jpe?g|gif|svg)$/,

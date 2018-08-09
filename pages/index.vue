@@ -3,14 +3,16 @@
         <div>
             <app-logo/>
             <h1 class="title">
-                nuxt-test{{$store.state.counter}}
+                nuxt-test{{$store.state.counter}}<br/> isClient:{{isClient}}
+                <br/> isServer:{{isServer}}
             </h1>
             <h2 class="subtitle">
                 Nuxt.js project
             </h2>
-            <button @click="$store.commit('increment')" class="subtitle">
-                        add++
-                    </button>
+            <button @click="$store.commit('increment')" class="subtitle">add++</button>
+            <ul>
+                <li v-for="(item, index) in list" :key="index">{{item.name}}</li>
+            </ul>
             <div class="links">
                 <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
                 <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
@@ -22,12 +24,41 @@
 </template>
 
 <script>
-    import AppLogo from '~/components/AppLogo.vue'
+    import AppLogo from '~/components/AppLogo.vue';
     export default {
-        layout: 'blog',//用layouts文件夹下的blog模板做页面布局
+        // layout: 'blog',//用layouts文件夹下的blog模板做页面布局
         //参数校验,返回false则跳转404
         validate(d) {
             return true;
+        },
+        async asyncData({
+            params,
+            query,
+            error,
+            store,
+            isClient,
+            isServer,
+            res
+        }) {
+            console.log(res)
+            if (isClient) return;
+            const {
+                data: {
+                    data: {
+                        list
+                    }
+                }
+            } = await store.state.axios.get('api/school', {
+                params: {
+                    page: 1,
+                    per_page: 20
+                }
+            });
+            return {
+                list,
+                isClient,
+                isServer
+            }
         },
         components: {
             AppLogo
@@ -47,12 +78,15 @@
             }
         },
         mounted() {
-            this.axios.get('api/school', {
-                params: {
-                    page: 1,
-                    per_page: 20
+            this.axios('api/rank').then(({
+                data: {
+                    data: {
+                        data: d
+                    }
                 }
-            });
+            }) => {
+                // console.log(d)
+            })
         },
         head() {
             return {
